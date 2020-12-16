@@ -3,7 +3,7 @@ from datetime import datetime
 import requests
 from PyQt5 import QtWidgets, QtCore
 
-from messenger import clientui
+from messenger.client import clientui
 
 
 # наследуем основной класс Ui_messenger
