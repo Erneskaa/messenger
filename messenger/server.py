@@ -32,19 +32,19 @@ def send_messages():
     if not isinstance(request.json, dict):
         return abort(400)
 
-    name = request.json.get('name')
     text = request.json.get('text')
-
-    if not isinstance(text, str) or not isinstance(name, str):
+    login = request.json.get('login')
+    if not isinstance(text, str):
         return abort(400)
-    if text == '' or name == '':
+    if text == '':
         return abort(400)
 
     db.append({
-        'text': request.json['text'],
-        'name': request.json['name'],
+        'text': text,
+        'login': login,
         'time': time.time()
     })
+    print('сенд масаге')
     return {'ok': True}
 
 
@@ -67,9 +67,9 @@ def get_messages():
     for message in db:
         if message['time'] > after:
             filtered_db.append(message)
-            # pagination - чтобы возвращать сообщения партиями
             if len(filtered_db) >= 100:
                 break
+    print('get_масаге')
     return {'messages': filtered_db}
 
 
@@ -87,9 +87,9 @@ def send_auth():
     users.append(
         {
             'login': login,
-            'password': password
+            'password': password,
         })
-
+    print(f'это /auth post данные,  логин: {login}, пароль: {password}')
     return {'login': login, 'password': password}
 
 

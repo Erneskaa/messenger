@@ -47,65 +47,16 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>100</y>
+      <y>80</y>
       <width>441</width>
-      <height>371</height>
+      <height>391</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLabel" name="nameChat">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>20</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="lineWidth">
-     <number>1</number>
-    </property>
-    <property name="text">
-     <string>Messenger</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="nameLabel">
-    <property name="geometry">
-     <rect>
-      <x>298</x>
-      <y>71</y>
-      <width>55</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Name:</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="name">
-    <property name="geometry">
-     <rect>
-      <x>367</x>
-      <y>70</y>
-      <width>113</width>
-      <height>22</height>
-     </rect>
+    <property name="styleSheet">
+     <string notr="true">QTextBrowser{
+border: 1px solid rgb(188, 188, 186);
+border-radius: 15px;
+}</string>
     </property>
    </widget>
   </widget>

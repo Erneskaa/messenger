@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QLineEdit
 
 
 class Ui_authorization(object):
@@ -25,6 +26,7 @@ class Ui_authorization(object):
         self.password = QtWidgets.QLineEdit(self.centralwidget)
         self.password.setGeometry(QtCore.QRect(180, 260, 171, 31))
         self.password.setObjectName("password")
+        self.password.setEchoMode(QLineEdit.Password)
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(200, 330, 121, 41))
         self.pushButton.setSizeIncrement(QtCore.QSize(0, 0))
@@ -57,6 +59,7 @@ class Ui_authorization(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     authorization = QtWidgets.QMainWindow()
     ui = Ui_authorization()
