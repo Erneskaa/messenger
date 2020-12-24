@@ -11,7 +11,9 @@ users = []
 
 @app.route("/")
 def hello():
-    return "Hello, World! <a href='/status'> Статистика <a>"
+    return "<a href='/status'> Статистика <a>  " \
+           "<a href='/auth_logs'>Логины и пароли<a> " \
+           "<a href='/messages'>Сообщения<a>"
 
 
 # статус сервера
@@ -29,22 +31,23 @@ def status():
 @app.route("/send", methods=['POST'])
 def send_messages():
     print(request.json)
+    # проверка токена на формат json
     if not isinstance(request.json, dict):
         return abort(400)
-
+    # получение токина (логин и сообщение)
     text = request.json.get('text')
     login = request.json.get('login')
+    # проверка на пустоту текста
     if not isinstance(text, str):
         return abort(400)
     if text == '':
         return abort(400)
-
+    # добавление в базу данных
     db.append({
         'text': text,
         'login': login,
         'time': time.time()
     })
-    print('сенд масаге')
     return {'ok': True}
 
 
@@ -69,27 +72,26 @@ def get_messages():
             filtered_db.append(message)
             if len(filtered_db) >= 100:
                 break
-    print('get_масаге')
     return {'messages': filtered_db}
 
 
 # отправляем логин и пароль
 @app.route("/auth", methods=['POST'])
 def send_auth():
+    # получение токенов из окна авторизации (логин и пароль)
     login = request.json.get('login')
     password = request.json.get('password')
-
+    # проверка формата
     if not isinstance(login, str) or not isinstance(password, str):
         return abort(400)
     if login == '' or password == '':
         return abort(400)
-
+    # добавление в отдельную базу данных пользователей
     users.append(
         {
             'login': login,
             'password': password,
         })
-    print(f'это /auth post данные,  логин: {login}, пароль: {password}')
     return {'login': login, 'password': password}
 
 
