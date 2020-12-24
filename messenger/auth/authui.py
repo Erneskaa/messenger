@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QLineEdit
 
 
 class Ui_authorization(object):
@@ -18,23 +19,24 @@ class Ui_authorization(object):
         authorization.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(authorization)
         self.centralwidget.setStyleSheet("QWidget{\n"
-"background-color: white\n"
-"}")
+                                         "background-color: white\n"
+                                         "}")
         self.centralwidget.setObjectName("centralwidget")
         self.login = QtWidgets.QLineEdit(self.centralwidget)
         self.login.setGeometry(QtCore.QRect(180, 190, 171, 31))
         self.login.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                 "border: 1px solid rgb(188, 188, 186);\n"
+                                 "border-radius: 10px;\n"
+                                 "}")
         self.login.setText("")
         self.login.setObjectName("login")
         self.password = QtWidgets.QLineEdit(self.centralwidget)
         self.password.setGeometry(QtCore.QRect(180, 260, 171, 31))
         self.password.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                    "border: 1px solid rgb(188, 188, 186);\n"
+                                    "border-radius: 10px;\n"
+                                    "}")
+        self.password.setEchoMode(QLineEdit.Password)
         self.password.setObjectName("password")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(200, 330, 121, 41))
@@ -44,10 +46,10 @@ class Ui_authorization(object):
         font.setPointSize(10)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("QPushButton{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"background-color: rgb(219, 255, 246)\n"
-"}")
+                                      "border: 1px solid rgb(188, 188, 186);\n"
+                                      "border-radius: 10px;\n"
+                                      "background-color: rgb(219, 255, 246)\n"
+                                      "}")
         self.pushButton.setCheckable(False)
         self.pushButton.setAutoRepeatDelay(300)
         self.pushButton.setObjectName("pushButton")
@@ -72,6 +74,7 @@ class Ui_authorization(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     authorization = QtWidgets.QMainWindow()
     ui = Ui_authorization()

@@ -34,7 +34,7 @@ def send_messages():
     # проверка токена на формат json
     if not isinstance(request.json, dict):
         return abort(400)
-    # получение токина (логин и сообщение)
+    # получение токена (логин и сообщение)
     text = request.json.get('text')
     login = request.json.get('login')
     # проверка на пустоту текста
