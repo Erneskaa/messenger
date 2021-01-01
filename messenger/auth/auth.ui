@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Authorization</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -27,7 +27,7 @@ background-color: white
      <rect>
       <x>180</x>
       <y>190</y>
-      <width>171</width>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
@@ -41,7 +41,7 @@ border-radius: 10px;
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Логин</string>
+     <string>Login..</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password">
@@ -49,7 +49,7 @@ border-radius: 10px;
      <rect>
       <x>180</x>
       <y>260</y>
-      <width>171</width>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
@@ -60,16 +60,16 @@ border-radius: 10px;
 }</string>
     </property>
     <property name="placeholderText">
-     <string>Пароль</string>
+     <string>Password..</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="sign_in">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>330</y>
-      <width>121</width>
-      <height>41</height>
+      <x>180</x>
+      <y>310</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="sizeIncrement">
@@ -92,7 +92,7 @@ background-color: rgb(219, 255, 246)
 }</string>
     </property>
     <property name="text">
-     <string>ВОЙТИ</string>
+     <string>Sign in</string>
     </property>
     <property name="checkable">
      <bool>false</bool>
@@ -101,9 +101,63 @@ background-color: rgb(219, 255, 246)
      <number>300</number>
     </property>
    </widget>
+   <widget class="QPushButton" name="admin">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>370</y>
+      <width>138</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border: 1px solid rgb(188, 188, 186);
+border-radius: 10px;
+background-color: rgb(255, 170, 127)
+}</string>
+    </property>
+    <property name="text">
+     <string>Administration</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sign_up">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>310</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial Unicode MS</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+border: 1px solid rgb(188, 188, 186);
+border-radius: 10px;
+background-color: rgb(219, 255, 246)
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Sign up</string>
+    </property>
+   </widget>
    <zorder>password</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>sign_in</zorder>
    <zorder>login</zorder>
+   <zorder>admin</zorder>
+   <zorder>sign_up</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

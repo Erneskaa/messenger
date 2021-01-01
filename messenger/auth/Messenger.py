@@ -27,7 +27,6 @@ class Authorization(QtWidgets.QMainWindow, authui.Ui_authorization):
 
         except:
             print('Упс.. что-то пошло не так')
-
             return
 
     # если ввод логина и пароля правильные, то открывается мессенджер и закрывается окно авторизации
@@ -95,7 +94,7 @@ class MessengerWindow(QtWidgets.QMainWindow, clientui.Ui_messenger):
             return
 
         if response.status_code == 400:
-            self.messagesBox.append('Неправильное имя или пароль')
+            self.messagesBox.append('Введите сообщение ')
             self.messagesBox.append('')
             self.messagesBox.repaint()
             return

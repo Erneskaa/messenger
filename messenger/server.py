@@ -12,8 +12,8 @@ users = []
 @app.route("/")
 def hello():
     return "<a href='/status'> Статистика <a>  " \
-           "<a href='/auth_logs'>Логины и пароли<a> " \
-           "<a href='/messages'>Сообщения<a>"
+           " <a href='/auth_logs'>Логины и пароли<a>" \
+           " <a href='/messages'>Сообщения<a>"
 
 
 # статус сервера
