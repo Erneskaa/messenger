@@ -38,23 +38,23 @@ class Ui_registration(object):
         self.login_regist = QtWidgets.QLineEdit(self.centralwidget)
         self.login_regist.setGeometry(QtCore.QRect(160, 125, 141, 29))
         self.login_regist.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                        "border: 1px solid rgb(188, 188, 186);\n"
+                                        "border-radius: 10px;\n"
+                                        "}")
         self.login_regist.setObjectName("login_regist")
         self.password_regist = QtWidgets.QLineEdit(self.centralwidget)
         self.password_regist.setGeometry(QtCore.QRect(160, 175, 141, 29))
         self.password_regist.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                           "border: 1px solid rgb(188, 188, 186);\n"
+                                           "border-radius: 10px;\n"
+                                           "}")
         self.password_regist.setObjectName("password_regist")
         self.confirm_regist = QtWidgets.QLineEdit(self.centralwidget)
         self.confirm_regist.setGeometry(QtCore.QRect(160, 225, 141, 29))
         self.confirm_regist.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                          "border: 1px solid rgb(188, 188, 186);\n"
+                                          "border-radius: 10px;\n"
+                                          "}")
         self.confirm_regist.setObjectName("confirm_regist")
         self.send_reg_form = QtWidgets.QPushButton(self.centralwidget)
         self.send_reg_form.setGeometry(QtCore.QRect(200, 290, 93, 28))
@@ -63,11 +63,11 @@ class Ui_registration(object):
         font.setPointSize(10)
         self.send_reg_form.setFont(font)
         self.send_reg_form.setStyleSheet("QPushButton{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"background-color: rgb(219, 255, 246)\n"
-"}\n"
-"")
+                                         "border: 1px solid rgb(188, 188, 186);\n"
+                                         "border-radius: 10px;\n"
+                                         "background-color: rgb(219, 255, 246)\n"
+                                         "}\n"
+                                         "")
         self.send_reg_form.setObjectName("send_reg_form")
         self.cancel_reg = QtWidgets.QPushButton(self.centralwidget)
         self.cancel_reg.setGeometry(QtCore.QRect(70, 290, 93, 28))
@@ -76,11 +76,11 @@ class Ui_registration(object):
         font.setPointSize(10)
         self.cancel_reg.setFont(font)
         self.cancel_reg.setStyleSheet("QPushButton{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"background-color: rgb(183, 196, 255)\n"
-"}\n"
-"")
+                                      "border: 1px solid rgb(188, 188, 186);\n"
+                                      "border-radius: 10px;\n"
+                                      "background-color: rgb(183, 196, 255)\n"
+                                      "}\n"
+                                      "")
         self.cancel_reg.setObjectName("cancel_reg")
         registration.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(registration)
@@ -102,6 +102,7 @@ class Ui_registration(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     registration = QtWidgets.QMainWindow()
     ui = Ui_registration()

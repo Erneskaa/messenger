@@ -20,17 +20,17 @@ class Ui_admin_sign_in(object):
         self.login_admin = QtWidgets.QLineEdit(self.centralwidget)
         self.login_admin.setGeometry(QtCore.QRect(170, 130, 181, 31))
         self.login_admin.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                       "border: 1px solid rgb(188, 188, 186);\n"
+                                       "border-radius: 10px;\n"
+                                       "}")
         self.login_admin.setText("")
         self.login_admin.setObjectName("login_admin")
         self.password_admin = QtWidgets.QLineEdit(self.centralwidget)
         self.password_admin.setGeometry(QtCore.QRect(170, 200, 181, 31))
         self.password_admin.setStyleSheet("QLineEdit{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"}")
+                                          "border: 1px solid rgb(188, 188, 186);\n"
+                                          "border-radius: 10px;\n"
+                                          "}")
         self.password_admin.setObjectName("password_admin")
         self.sign_in_admin = QtWidgets.QPushButton(self.centralwidget)
         self.sign_in_admin.setGeometry(QtCore.QRect(270, 260, 81, 31))
@@ -40,10 +40,10 @@ class Ui_admin_sign_in(object):
         font.setPointSize(10)
         self.sign_in_admin.setFont(font)
         self.sign_in_admin.setStyleSheet("QPushButton{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"background-color: rgb(219, 255, 246)\n"
-"}")
+                                         "border: 1px solid rgb(188, 188, 186);\n"
+                                         "border-radius: 10px;\n"
+                                         "background-color: rgb(219, 255, 246)\n"
+                                         "}")
         self.sign_in_admin.setCheckable(False)
         self.sign_in_admin.setAutoRepeatDelay(300)
         self.sign_in_admin.setObjectName("sign_in_admin")
@@ -54,11 +54,11 @@ class Ui_admin_sign_in(object):
         font.setPointSize(10)
         self.cancel_admin.setFont(font)
         self.cancel_admin.setStyleSheet("QPushButton{\n"
-"border: 1px solid rgb(188, 188, 186);\n"
-"border-radius: 10px;\n"
-"background-color: rgb(183, 196, 255)\n"
-"}\n"
-"")
+                                        "border: 1px solid rgb(188, 188, 186);\n"
+                                        "border-radius: 10px;\n"
+                                        "background-color: rgb(183, 196, 255)\n"
+                                        "}\n"
+                                        "")
         self.cancel_admin.setObjectName("cancel_admin")
         admin_sign_in.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(admin_sign_in)
@@ -79,6 +79,7 @@ class Ui_admin_sign_in(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     admin_sign_in = QtWidgets.QMainWindow()
     ui = Ui_admin_sign_in()

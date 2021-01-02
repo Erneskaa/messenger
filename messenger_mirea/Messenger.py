@@ -1,16 +1,20 @@
+import sys
 from datetime import datetime
 
-from PyQt5 import QtWidgets, QtCore
 import requests
-from messenger.auth import authui, clientui
+from PyQt5 import QtWidgets, QtCore
+
+from messenger_mirea.auth import authui, clientui, sign_up_ui
 
 
 # окно авторизации
+
 class Authorization(QtWidgets.QMainWindow, authui.Ui_authorization):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.pushButton.clicked.connect(self.send_login)
+        self.sign_in.clicked.connect(self.send_login)
+        self.sign_up.clicked.connect(self.window_registration)
 
     # отправка логина и пароля на сервер
     def send_login(self):
@@ -23,29 +27,55 @@ class Authorization(QtWidgets.QMainWindow, authui.Ui_authorization):
                 json={'login': login, 'password': password}
             )
             if response:
-                self.init_handlers()
+                window.close()
+                messenger.show()
 
         except:
-            print('Упс.. что-то пошло не так')
+            # print('Упс.. что-то пошло не так')
             return
 
-    # если ввод логина и пароля правильные, то открывается мессенджер и закрывается окно авторизации
-    def init_handlers(self):  # обработка нажатия для октрытия 2 окна
-        self.pushButton.clicked.connect(self.show_window_2)
-
-    # собственно открытие второго окна
-    def show_window_2(self):
+    @staticmethod
+    def window_registration():
         window.close()
-        self.messenger = MessengerWindow()
-        self.messenger.show()
+        registration_window.show()
 
 
-# окно самого мессенджера
-class MessengerWindow(QtWidgets.QMainWindow, clientui.Ui_messenger):
+# регистрационное окно
+class Registration(QtWidgets.QMainWindow, sign_up_ui.Ui_registration):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.messagesPush.pressed.connect(self.send_message)
+        self.cancel_reg.clicked.connect(self.cancel_window_reg)
+        # отправка формы регистрации
+        self.send_reg_form.clicked.connect(self.send_form)
+
+    def send_form(self):
+        login = self.login_regist.text()
+        password = self.password_regist.text()
+        confirm_password = self.confirm_regist.text()
+        try:
+            response = requests.post(
+                'http://127.0.0.1:5000/auth',
+                json={'login': login, 'password': password, 'confirm_password': confirm_password}
+            )
+            if response:
+                self.cancel_window_reg()
+        except:
+            return
+
+    # закрытие регистрационного окна
+    @staticmethod
+    def cancel_window_reg():
+        registration_window.close()
+        window.show()  # открытие авторизации
+
+
+# окно самого мессенджера
+class MessengerWindow(QtWidgets.QMainWindow, clientui.Ui_messenger_window):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.messagesPush.clicked.connect(self.send_message)
         self.after = 0
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.update_messages)
@@ -104,7 +134,10 @@ class MessengerWindow(QtWidgets.QMainWindow, clientui.Ui_messenger):
         self.messagesInput.repaint()
 
 
-app = QtWidgets.QApplication([])
-window = Authorization()
-window.show()
-app.exec_()
+if __name__ == '__main__':
+    app = QtWidgets.QApplication([])
+    registration_window = Registration()
+    window = Authorization()
+    messenger = MessengerWindow()
+    window.show()
+    sys.exit(app.exec_())
