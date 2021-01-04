@@ -4,7 +4,12 @@ from datetime import datetime
 import requests
 from PyQt5 import QtWidgets, QtCore
 
-from messenger_mirea.auth import authui, clientui, sign_up_ui
+from messenger_mirea.auth import authui, clientui, sign_up_ui, errorui
+
+
+# def repaint(*args):
+#     for arg in args:
+#         arg.clear()
 
 
 # окно авторизации
@@ -29,7 +34,6 @@ class Authorization(QtWidgets.QMainWindow, authui.Ui_authorization):
             if response:
                 window.close()
                 messenger.show()
-
         except:
             # print('Упс.. что-то пошло не так')
             return
@@ -55,13 +59,15 @@ class Registration(QtWidgets.QMainWindow, sign_up_ui.Ui_registration):
         confirm_password = self.confirm_regist.text()
         try:
             response = requests.post(
-                'http://127.0.0.1:5000/auth',
+                'http://127.0.0.1:5000/registration',
                 json={'login': login, 'password': password, 'confirm_password': confirm_password}
             )
             if response:
                 self.cancel_window_reg()
+            else:
+                error.show()
         except:
-            return
+            return print('nope')
 
     # закрытие регистрационного окна
     @staticmethod
@@ -134,10 +140,17 @@ class MessengerWindow(QtWidgets.QMainWindow, clientui.Ui_messenger_window):
         self.messagesInput.repaint()
 
 
+class Error(QtWidgets.QMainWindow, errorui.Ui_Error):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
     registration_window = Registration()
     window = Authorization()
     messenger = MessengerWindow()
     window.show()
+    error = Error()
     sys.exit(app.exec_())

@@ -100,12 +100,3 @@ class Ui_registration(object):
         self.cancel_reg.setText(_translate("registration", "Cancel"))
 
 
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    registration = QtWidgets.QMainWindow()
-    ui = Ui_registration()
-    ui.setupUi(registration)
-    registration.show()
-    sys.exit(app.exec_())

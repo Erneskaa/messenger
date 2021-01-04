@@ -1,3 +1,4 @@
+import re
 import time
 from datetime import datetime
 
@@ -15,9 +16,23 @@ admin_default_log = [{
 }]
 
 
+# проверка пароля на: длина неменьше 4, англ символы, дожная быть как минимум 1 заглавная буква
+def password_check(passwd):
+    print('проверка пароля активейтед')
+    return len(passwd) > 4 and all(re.search(p, passwd) for p in ('[A-Z]', '[0-9]', '[a-z]'))
+
+
+def isinstance_str_log_pass(log, passwd):
+    if not isinstance(log, str) or not isinstance(passwd, str):
+        return abort(400)
+    if log == '' or passwd == '':
+        return abort(400)
+    return True
+
+
 @app.route("/")
 def hello():
-    return "<a href='/status'> Статистика <a>  " \
+    return "<a href='/status'> Статус <a>  " \
            " <a href='/auth_logs'>Логины и пароли<a>" \
            " <a href='/messages'>Сообщения<a>"
 
@@ -61,7 +76,6 @@ def send_messages():
 @app.route('/messages')
 def get_messages():
     if 'after' in request.args:
-        print(request.args['after'])
         try:
             # проверка формата after
             after = float(request.args['after'])
@@ -88,12 +102,14 @@ def send_reg_form():
         login = request.json.get('login')
         password = request.json.get('password')
         confirm_pass = request.json.get('confirm_password')
-        if login != '' or password != '' or confirm_pass != '':
-            if password == confirm_pass:
-                users.append({
-                    'login': login,
-                    'password': password
-                })
+        if isinstance_str_log_pass(login, password):
+            if password_check(password):
+                if password == confirm_pass:
+                    users.append({
+                        'login': login,
+                        'password': password
+                    })
+                    return {'ok': True}
     except:
         return abort(400)
 
@@ -106,10 +122,7 @@ def send_auth():
         login = request.json.get('login')
         password = request.json.get('password')
         # проверка формата
-        if not isinstance(login, str) or not isinstance(password, str):
-            return abort(400)
-        if login == '' or password == '':
-            return abort(400)
+        isinstance_str_log_pass(login, password)
 
         # добавление в отдельную базу данных пользователей
         users.append(
@@ -119,7 +132,7 @@ def send_auth():
             })
         return {'login': login, 'password': password}
     except:
-        print('что-то пошло не так')
+        return abort(400)
 
 
 # получаем базу участников
